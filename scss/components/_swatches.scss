@@ -1,0 +1,19 @@
+.swatch-attribute-options {
+	display: flex;
+	flex-wrap: wrap;
+	align-content: center;
+	align-items: center;
+
+	.swatch-option {
+		display: flex;
+		justify-content: center;
+		height: auto;
+		width: 30px;
+
+		&.text {
+			&.selected {
+				@include v(outline-color, outline);
+			}
+		}
+	}
+}

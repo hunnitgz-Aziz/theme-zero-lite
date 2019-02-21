@@ -1,0 +1,40 @@
+/* ===GLOBAL SETTINGS=== */
+$container-width: 1280px;
+$header-height: 80px;
+
+/* ===BANNER SETTINGS=== */
+$banner-mode: OFF;
+$full-width-banner: ON;
+
+/* ===BREADCRUMB SETTINGS=== */
+///Toggle Breadcrumb Element ON & OFF
+$breadcrumb-mode: OFF;
+
+/* ===HEADER LAYOUT SETTINGS=== */
+
+///Toggle User Login/Register Pane Wrapper ON & OFF
+$user-panel: OFF;
+
+
+///Toggle Full Width Header Mode ON & OFF
+$full-width-header: ON;
+
+
+///Toggle Fixed Header Mode ON & OFF
+$fixed-header-mode: ON;
+
+
+///Toggle Search Form ON & OFF
+$search-mode: OFF;
+
+///Toggle Center Logo Mode ON & OFF
+$center-logo-mode: ON;
+
+
+/* ===PRODUCT GRID SETTINGS=== */
+
+///Set amount of products per row 992px screens and up
+$items-per-row: 3;
+$item-spacer: 1rem;
+
+

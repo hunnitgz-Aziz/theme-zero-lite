@@ -1,0 +1,94 @@
+.checkout-cart-index {
+	.cart-container {
+		.form-cart {
+			.table-wrapper {
+				.product-item-name, .price {
+					font-size: $base-font-size;
+				}
+
+				.actions-toolbar {
+					text-align: right;
+
+					.action-edit, .action-delete { position: initial; }
+				}
+			}
+		}
+
+		.cart-summary {
+			//You can define background-color and font-color here
+			//@include v(background-color, secondary);
+			@include v(color, text);
+
+			.cart-totals {
+				.grand.totals {
+					.mark, .amount {
+						font-size: rem(18px);
+					}
+				}
+			}
+
+			.checkout-methods-items {
+				.multicheckout {
+					@include v(color, text);
+
+					&:hover {
+						text-decoration: none;
+					}
+				}
+			}
+		}
+
+		.cart-discount {
+			@include v(border-color, border);
+			border-top: 1px;
+			border-bottom: 1px;
+			padding-top: 1rem;
+
+			.discount {
+				.title {
+					strong {
+						@include v(color, text);
+						font-size: rem(17px);
+					}
+				}
+
+				.content {
+					.coupon {
+						display: flex;
+
+						.field {
+							margin: 0;
+
+							.control {
+								height: 100%;
+
+								.input-text {
+									height: 100%;
+								}
+							}
+						}
+
+						.actions-toolbar {
+							.primary.apply {
+								@include v(background-color, primary);
+								@include v(border-color, primary);
+								box-shadow: none;
+								color: $primary-button-font-color;
+								font-size: $base-font-size;
+								padding: 0.8rem 1rem;
+							
+								span {
+									color: $primary-button-font-color;
+								}
+								&:hover {
+									@include v(background-color, primary);
+									@include v(border-color, primary);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}	
+}

@@ -1,0 +1,24 @@
+.customer-account-login {
+	.block-customer-login {
+		.form-login {
+			.login {
+				.actions-toolbar {
+					display: flex;
+					align-items: center;
+					align-content: center;
+
+					.secondary {
+						background-color: transparent;
+						border: 0;
+
+						.remind {
+							&:hover {
+								text-decoration: none;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

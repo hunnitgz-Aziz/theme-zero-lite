@@ -1,0 +1,9 @@
+.page-products {
+	.products-grid {
+		.product-item {
+			@include respond-above(sm) {
+				width: 100% !important;
+			}
+		}
+	}
+}

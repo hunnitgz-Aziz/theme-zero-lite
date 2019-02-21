@@ -1,0 +1,31 @@
+#
+# Copy the default.gulpfile.yml, then change any
+# setting to match your system
+#
+paths:
+  # devUrl: "clubpussy.thunderpussyusa.com"
+theme:
+  # name: "thunderpussy"
+css:
+  src: ["scss/**/*.scss"]
+  dest: "css"
+  buildSourceMaps: true
+  lint:
+    enabled: false
+    failOnError: false
+  browsers: ["last 4 version", "> 5%", "IE 9"]
+browserSync:
+  site:
+    enabled: false
+    port: 3001
+    ui:
+      port: 3002
+    open: "local"
+    reloadDelay: 50
+    reloadDebounce: 750
+    injectChanges: true
+    ghostMode: true
+    injectChanges: true
+    notify: true
+    online: true
+    browser: ["firefox"]

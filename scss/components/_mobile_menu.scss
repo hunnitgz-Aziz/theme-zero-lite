@@ -1,0 +1,17 @@
+.nav-open {
+	.nav-sections {
+		.nav-sections-item-content {
+			.navigation {
+				a {
+					font-size: $paragraph-size;
+				}
+			}
+
+			.header.links {
+				li {
+					font-size: $paragraph-size;
+				}
+			}
+		}
+	}
+}

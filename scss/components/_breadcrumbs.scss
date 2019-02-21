@@ -1,0 +1,9 @@
+.breadcrumbs {
+	padding-top: $header-height;
+
+	@if $breadcrumb-mode == OFF {
+		display: none;
+	} @else if $breadcrumb-mode == ON {
+		display: block;
+	}
+}

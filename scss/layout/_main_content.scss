@@ -1,0 +1,13 @@
+.page-main {
+	@if $fixed-header-mode == OFF {
+		padding-top: $header-height / 2;
+	} @else if $fixed-header-mode == ON {
+		padding-top: $header-height * 1.2;
+	} 
+
+	@if $fixed-header-mode == ON and $banner-mode == ON {
+		padding-top: 0;
+	} @else if $fixed-header-mode == ON and $banner-mode == OFF {
+		padding-top: $header-height * 1.2;
+	}
+}

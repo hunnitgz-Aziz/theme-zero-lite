@@ -1,0 +1,24 @@
+// Pagers
+.pages {
+  &-items{
+
+  }
+  a.page, a.page:visited {
+    @include v(color, text);
+    font-weight: bold;
+  }
+  .item, strong.page {
+    line-height: 2rem;
+    width:2rem;
+  }
+  strong.page, .item a:hover {
+    background: transparent;
+    @include v(color, primary);
+  }
+  .action {
+    @include v(background-color, border);
+    @include v(color, text);
+    border:none;
+    box-shadow: none;
+  }
+}

@@ -1,0 +1,128 @@
+
+// Variables - https://codepen.io/jakealbaugh/post/css4-variables-with-fallbacks-using-sass
+
+// color map
+$clr: (
+  background: #000,
+  border: #eee,
+  outline: #AD949E,
+  primary: #AD949E,
+  secondary: #000,
+  text: #333,
+  titles: #111,
+  content-bg: #fff,
+  header-bg: #fff,
+  product-bg: #fff,
+  product-title: #111,
+  minicart-bg: #fff,
+  minicart-font: #111,
+  header-text: #222,
+  footer-bg: #fff,
+  footer-text: #111,
+);
+
+$grid: (
+  grid-sm: 1,
+  grid-md: 2,
+  grid-lg: 3,
+  grid-xl: 4,
+);
+
+$aspect-ratio: (
+  landscape: 56.25%,
+  portrait: 177.78%
+);
+
+// font map
+$font: (
+  family: (
+    body: (Merriweather, Georgia, serif),
+    head: (Roboto, Helvetica, sans-serif)
+  ),
+  weight: (
+    body: 300,
+    head: 700
+  ),
+  /*size: (
+    body: 18px,
+    h1: 2.4em,
+    h2: 2em,
+    h3: 1.6em,
+    h4: 1.4em,
+  ),*/
+  /*leading: (
+    body: 1.7,
+    head: 1.2,
+  )*/
+);
+
+// associate variable map name to an actual variable map
+$var-maps: (
+  color: $clr,
+  font: $font,
+  grid: $grid,
+  aspect-ratio: $aspect-ratio
+);
+
+// which property uses which var map
+// you would edit this for each property you want to use variables for
+$props: (
+  background-color: color,
+  color:            color,
+  border-color:     color,
+  outline-color:    color,
+  font-family:      (font, family),
+  //font-size:      (font, size),
+  font-weight:      (font, weight),
+  grid:             grid,
+  //line-height:    (font, leading),
+  padding-bottom:   aspect-ratio
+);
+
+
+// setup the css4 variable definitions
+:root {
+  // for each variable map
+  @each $var-map-name, $var-map in $var-maps {
+    // for each variable in the variable map
+    @each $var, $val in $var-map {
+      // if it is a map, go another level deep
+      @if type-of($val) == map {
+        // each in the map
+        @each $var-n, $val-n in $val {
+          // do the definition
+          #{--$var-map-name}-#{$var}-#{$var-n}: $val-n;
+        }
+      } @else {
+        // do the definition
+        //#{--$var-map-name}-#{$var}: $val;
+        --#{$var}: #{$val};
+      }
+    }
+  }
+}
+
+
+//
+// // setup the css4 variable definitions
+// :root {
+//     // for each variable map
+//     @each $var-map-name, $var-map in $var-maps {
+//         // for each variable in the variable map
+//         @each $var, $val in $var-map {
+//             // if it is a map, go another level deep
+//             @if type-of($val) == map {
+//                 // each in the map
+//                 @each $var-n, $val-n in $val {
+//                     // do the definition
+//                     #{--$var-map-name}-#{$var}-#{$var-n}: $val-n;
+//                     //#{--$var-n}: $val-n;
+//                 }
+//             } @else {
+//                 // do the definition
+//                 //#{--$var-map-name}-#{$var}: $val;
+//                 --#{$var}: $val;
+//             }
+//         }
+//     }
+// }

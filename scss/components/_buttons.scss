@@ -1,0 +1,63 @@
+///Primary Button Settings
+$primary-button-font-color: #fff;
+
+button, .button-primary {
+	border: 1px solid;
+	border-radius: 2px;
+	font-weight: bold;
+	transition: all ease-in-out 0.2s;
+	padding:0 1rem;
+	> span {
+		font-weight: bold;
+	}
+	&:hover {
+		//background: $pink;
+		//border: 1px solid $pink;
+		opacity: .9;
+		color: $primary-button-font-color;
+		text-decoration: none;
+	}
+	&:not(.primary) {
+		line-height: 1em;
+		font-size: 1rem;
+		box-shadow: none;
+		@include v(background-color, border);
+		@include v(border-color, border);
+		@include v(color, text);
+	}
+	&.primary {
+	  &.action {
+			@include v(background-color, primary);
+			@include v(border-color, primary);
+			color: $primary-button-font-color;
+			padding: 0.8rem 1rem;
+		
+			span {
+				color: $primary-button-font-color;
+			}
+			&:hover {
+				@include v(background-color, primary);
+				@include v(border-color, primary);
+			}
+	  }
+		&.checkout {
+			line-height: 1.6rem !important;
+			font-size: 1rem !important;
+		}
+		&.tocart {
+			line-height: 1.6rem !important;
+			font-size: 1rem !important;
+		}
+	}
+}
+
+// override review-form submit button style
+.review-form .action.submit.primary {
+	@extend button.action.primary;
+	font-size:1rem;
+	font-weight: bold;
+}
+
+.viewcart, .update, .apply {
+	@extend .primary.action;
+}

@@ -1,0 +1,12 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  @include v(background-color, background);
+  @include v(color, text);
+}
+
+a {
+	transition: all ease-in-out 0.2s;
+}

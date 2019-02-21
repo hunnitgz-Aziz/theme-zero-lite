@@ -1,0 +1,71 @@
+// PX to REM - Usage: font-size: rem(37px);
+@function rem($px, $base: $base-font-size) {
+    @return ($px / $base) * 1rem;
+}
+
+/// Slightly lighten a color
+/// @access public
+/// @param {Color} $color - color to tint
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+/// Slightly darken a color
+/// @access public
+/// @param {Color} $color - color to shade
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+// the variable mixin takes a property and variable name
+@mixin v($prop, $var, $show-fall: true, $important: false) {
+    // get the property's map name(s)
+    $map-name: map-get($props, $prop);
+    $nest-name: null;
+    $nest-map-name: null;
+    $map: null;
+    $var-fall: null;
+    $var-output: null;
+    // if a list, we need to go deeper
+    @if type-of($map-name) == list {
+        $nest-name: nth($map-name, 1);
+        $nest-map-name: nth($map-name, 2);
+    }
+    // if it is a nested map
+    @if $nest-name {
+        // get the map from nested map-name
+        $map: map-get($var-maps, $nest-name);
+        // get the nested map
+        $nest-map: map-get($map, $nest-map-name);
+        // get the var value fro mthe nested map
+        $var-fall: map-get($nest-map, $var);
+        $var-output: var(--#{$nest-name}-#{$nest-map-name}-#{$var});
+    } @else {
+        // get the map from map name
+        $map: map-get($var-maps, $map-name);
+        // fallback, grab the variable's value from the map
+        $var-fall: map-get($map, $var);
+        // $var-output: var(--#{$map-name}-#{$var});
+        $var-output: var(--#{$var});
+    }
+    // if show standard is not overridden to be null
+    @if $show-fall {
+        #{$prop}: $var-fall;
+    }
+    @if $important {
+
+        // css4 variable output
+        #{$prop}: $var-output!important;
+
+    } @else {
+
+        // css4 variable output
+        #{$prop}: $var-output;
+
+    }
+
+}

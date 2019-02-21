@@ -1,0 +1,235 @@
+$show-sign-in-text: ON;
+$show-wish-list: ON;
+$wish-list-font-color: #000;
+$user-account-icon-color: #000;
+
+.page-header {
+	@if $fixed-header-mode == OFF {
+		position: initial;
+	} @else if $fixed-header-mode == ON {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: 1001;
+	}
+	.panel.wrapper {
+		@if $user-panel == OFF {
+			display: none;
+		} @else if $user-panel == ON {
+			display: block;
+		}
+	}
+
+	.header.content {
+		padding: 0 1rem;
+		align-content: center;
+		align-items: center;
+		height: $header-height;
+		// temporarily use body background, will add option for header/footer-specific colors in future;
+		@include v(background-color, header-bg);
+		@include respond-below(sm) {
+			height: 60px;
+		}
+
+		@if $full-width-header == OFF {
+			max-width: $container-width;
+			border-bottom: 0;
+
+		} @else if $full-width-header == ON {
+			max-width: 100%;
+
+			@include respond-above(sm) {
+			  border-bottom: 1px solid;
+				@include v(border-color, border)
+			}
+		}
+
+		.logo, .nav-sections, .navbar-actions {
+			@if $center-logo-mode == ON {
+				@include respond-above(sm) {
+					flex: 0 1 33.3333%;
+				}
+			}
+		}
+
+		.logo {
+			@include respond-above(sm) {
+				height: $header-height;
+				line-height: $header-height;
+
+				@if $center-logo-mode == ON {
+					order: 2;
+					text-align: center;
+				}
+				
+
+				img {
+					line-height: $header-height;
+					display: inline-block;
+					vertical-align: middle;
+				}
+			}
+
+			@include respond-below(sm) {
+				margin: 0 auto;
+				transform: none;
+
+				img {
+					height: 2rem;
+				}
+			}
+		}
+
+		.minicart-wrapper {
+			@include respond-above(sm) {
+				text-align: right;
+			}
+
+			@include respond-below(sm) {
+				margin: 0;
+			}
+		}
+
+		.nav-sections {
+			@include respond-above(sm) {
+			  background: transparent;
+
+			  @if $center-logo-mode == OFF {
+			  	order: 2;
+			  }
+			}
+
+			.navigation {
+				background: transparent;
+				a {
+					@include v(color, header-text, true, true);
+					&:hover {
+						@include v(color, primary, true, true);
+					}
+				}
+				.ui-menu {
+					.category-item {
+						a {
+							@include respond-above(sm) {
+								height: $header-height;
+								line-height: $header-height;
+							}
+						}
+					}
+				}
+				.level0 {
+					&.active, &.has-active {
+						>.level-top {
+								@include v(border-color, primary);
+								@include v(color, primary, true, true);
+						}
+					}
+				}
+			}
+		}
+
+		.block-search {
+			@if $search-mode == OFF {
+				display: none;
+			} @else if $search-mode == ON {
+				display: block;
+				order: 2;
+			}
+		}
+
+	  .switcher-currency {
+	    position: absolute;
+	    right:50px;
+	  }
+
+	  .navbar-actions {
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+			order: 3;
+
+			.links {
+				display: flex;
+				align-items: center;
+				flex-flow: row wrap;
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+
+				> li {
+					margin-bottom: 0;
+				}
+
+				#invitation-send-link { 
+					display: none;
+					@include v(color, header-text);
+					transition: all ease-in-out 0.2s;
+
+					@include respond-below(sm) {
+						display: none;
+					}
+
+					&:hover {
+						@include v(color, primary);
+						text-decoration: none;
+					}
+				}
+
+				.wishlist, .authorization-link {
+					display: inline-block;
+					margin-bottom: 0;
+					margin-left: 0.8rem;
+
+					a {
+						@include v(color, header-text);
+						transition: all ease-in-out 0.2s;
+
+						&:hover {
+							text-decoration: none;
+						}
+					}
+
+					@include respond-below(md) {
+						display: none;
+					}
+				}
+
+				.wishlist {
+					@if $show-wish-list == OFF {
+						display: none;
+					} @else if $show-wish-list == ON {
+						display: block;
+					}
+
+					a {
+						color: $wish-list-font-color;
+					}
+
+					@include respond-below(sm) { display: none; }
+				}
+
+				.authorization-link {
+					a {
+						@include v(color, header-text);
+						display: flex;
+						align-items: center;
+
+						.sign-in-icon {
+							margin-right: 0.2rem;
+						}
+
+						span {
+							@if $show-sign-in-text == OFF {
+								display: none;
+							} @else if $show-sign-in-text == ON {
+								display: block;
+							}
+						}
+					}
+				}
+			}
+		}
+
+	}
+}

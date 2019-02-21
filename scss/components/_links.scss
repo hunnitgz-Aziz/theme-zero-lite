@@ -1,0 +1,32 @@
+// Primary-colored links
+a {
+  &:visited, &.alink:visited {
+    @include v(color, text);
+    font-weight: bold;
+  }
+  &.action {
+    @include v(color, primary);
+    .secondary & {
+      // links meant to look like buttons
+      .actions & {
+          @include v(background-color, border);
+          @include v(color, text);
+          text-decoration: none;
+      }
+    }
+    &.viewcart {
+      .secondary & {
+        // links meant to look like buttons
+        .actions & {
+          background:#eee;
+          color: #777;
+          &:hover {
+            background:#ddd;
+            color: #555;
+          }
+        }
+      }
+    }
+  }
+
+}

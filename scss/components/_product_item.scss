@@ -1,0 +1,93 @@
+$tablet-row-items: $items-per-row - 1;
+$phone-row-items: 1;
+
+// products-grid
+
+.products-grid {
+  .page-layout-1column .block.widget & {
+    // reset
+    .product-item {
+      @include v(background-color, product-bg);
+      width:100%!important;
+    }
+  }
+  .product-image-container {
+    width:100%!important;
+    height:auto;
+    background:#fff;
+  }
+  &.grid {
+    @supports (display: grid) {
+      .product-items {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-auto-rows: auto;
+        grid-gap: 1rem;
+        @include respond-above(sm) {
+          grid-template-columns: repeat(var(--grid-sm), 1fr);
+        }
+        @include respond-above(md) {
+          grid-template-columns: repeat(var(--grid-md), 1fr);
+        }
+        @include respond-above(lg) {
+          grid-template-columns: repeat(var(--grid-lg), 1fr);
+        }
+        @include respond-above(xl) {
+          grid-template-columns: repeat(var(--grid-xl), 1fr);
+        }
+      }
+    }
+    
+    .product-item {
+			width:100%;
+      border:1px solid;
+      @include v(background-color, content-bg);
+			@include v(border-color, border);
+      border-radius:5px;
+      margin:0 auto $item-spacer;
+      padding:0;
+      //box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+      transition: opacity 0.3s cubic-bezier(.25,.8,.25,1);
+      &-info {
+        display: flex;
+        justify-content: center;
+        flex-flow:column;
+				padding:0;
+        width:100%;
+      }
+      &-details {
+        text-align: center;
+				padding:$item-spacer 2*$item-spacer;
+				.product-item-name {
+					height: auto;
+					margin-bottom: $item-spacer;
+					hyphens: none;
+					.product-item-link {
+						font-size: rem(21px);
+						font-weight: bold;
+						@include v(font-family, head);
+						@include v(color, titles);
+						&:hover {
+							text-decoration: none;
+						}
+					}
+				}
+				.price-box {
+					.price {
+						font-size: $base-font-size;
+            @include v(color, primary);
+					}
+				}
+      }
+			&:hover {
+				opacity: .9;
+			}
+    }
+  }
+
+  .product-item-info, .products-grid .product-item-info.active {
+    &:hover, &.active {
+      background:transparent;
+    }
+  }
+}

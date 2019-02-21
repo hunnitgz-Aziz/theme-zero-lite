@@ -1,0 +1,67 @@
+///Minicart Block Settings
+$mini-cart-ui-color: #000;
+
+.minicart-wrapper {
+	.showcart {
+		&:before {
+			@include v(color, header-text, true, true);
+		}
+
+		.counter.qty {
+			@include v(background-color, primary, true, true);
+			min-width: 24px;
+			width: 24px;
+
+			.counter-number {
+				color:#fff;
+				text-shadow:none;
+				font-size: .8rem;
+				font-weight: bold;
+			}
+		}
+	}
+
+	.block-minicart {
+		@include v(background-color, minicart-bg);
+		@include v(color, minicart-font);
+		right: 0;
+
+		&:before {
+			// border-color: transparent transparent $mini-cart-bg transparent;
+			@include v(border-color, minicart-bg);
+			border-top-color: transparent;
+			border-left-color: transparent;
+			border-right-color: transparent;
+		}
+
+		.viewcart {
+			color: #000;
+			display: block;
+			padding: 14px 17px;
+		}
+	}
+}
+
+.minicart-items-wrapper {
+	border: none;
+
+	.product-item-details {
+		text-align: left;
+
+		.product-item-name {
+			a {
+				@include v(color, minicart-font);
+			}
+		}
+	}
+}
+
+.minicart-items {
+	.edit, .delete {
+		background-color: transparent !important;
+		&:before {
+			color: $mini-cart-ui-color !important;
+			background: transparent;
+		}
+	}
+}

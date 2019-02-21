@@ -1,0 +1,217 @@
+///Toggle Social Links Container
+$social-links-mode: OFF;
+
+///Toggle Additional Attributes Container
+$attributes-mode: OFF;
+
+///Adjust Product Title Font Size
+$product-title-font-size: 36px;
+
+///Adjust Product Price Font Size
+$product-price-font-size: 16px;
+
+
+// Temporarily adding bg to png's that aren't optimized
+.fotorama__stage__frame {
+	background:#fff;
+}
+
+// fix loader image Styles
+.loading-mask {
+	@include v(background-color, border);
+	opacity: .5;
+	.loader>img {
+		opacity:.7;
+		transform:scale(.7);
+	}
+}
+
+.catalog-product-view {
+	.product-info-main {
+		.page-title-wrapper .page-title .base {
+			font-size: rem($product-title-font-size);
+		}
+
+		.product-info-price {
+			display: block;
+			clear:both;
+			.price-box {
+				.price {
+					font-size: rem($product-price-font-size);
+					@include v(color, primary)
+				}
+			}
+		}
+
+		.control {
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			align-content: center;
+			margin-bottom: $item-spacer;
+		}
+
+		.box-tocart .qty .control {
+			display: flex;
+
+			button[data-bind="click: decreaseQty"], .input-text, button[data-bind="click: increaseQty"] {
+				display: flex;
+				height: 44px;
+				width: 56px;
+				justify-content: center;
+				align-items: center;
+				align-content: center;
+			}
+
+			button[data-bind="click: decreaseQty"], button[data-bind="click: increaseQty"] {
+				@include v(background-color, secondary);
+				@include v(color, text);
+			}
+
+			button[data-bind="click: decreaseQty"] {
+				order: 1;
+				margin-right: 0.25rem;
+			}
+
+			.input-text {
+				order: 2;
+			}
+
+			button[data-bind="click: increaseQty"] {
+				order: 3;
+			}
+		}
+
+		input.qty {
+			padding:0 1rem;
+			height: 40px;
+			line-height: 1em;
+			font-size: 1rem;
+			~ button:not(.primary) {
+				height: 40px;
+				margin-left:.25*$item-spacer;
+			}
+		}
+
+
+
+	}
+
+	.product-social-links {
+		@if $social-links-mode == OFF {
+			display: none;
+		} @else if $social-links-mode == ON {
+			display: block;
+		}
+	}
+
+	.additional-attributes {
+		@if $attributes-mode == OFF {
+			display: none;
+		} @else if $attributes-mode == ON {
+			display: block;
+		}
+	}
+}
+
+// PDP MAIN
+
+.product-info-main {
+  .artist-name {
+		a {
+			@extend .h5;
+		}
+	}
+	.product-info-stock-sku {
+		display: block;
+		claer: both;
+		clear: both;
+		text-align: left;
+		padding: 0;
+		padding-bottom: 2*$item-spacer;
+	}
+
+  .stock {
+		@include v(color, titles);
+		@include v(font-family, head);
+  }
+  .product-info-price {
+    color: var(--text);
+    border-color: var(--border);
+  }
+
+  .social-share {
+  	.share {
+  		@include v(color, primary);
+  		transition: all ease-in-out 0.2s;
+
+  		&:hover {
+  			opacity: 0.9;
+  		}
+  	}
+  }
+}
+
+
+// PDP  details
+.product-item-info, .products-grid .product-item-info.active {
+  &:hover, &.active {
+    background:transparent;
+  }
+}
+
+.product.info.detailed {
+  .product.data.items>.item.content {
+    @include v(background-color, background);
+		@include v(border-color, border);
+		opacity: 0;
+		transition: opacity .2s ease;
+		// show details once loaded to prevent flash of text
+		&[aria-hidden="false"] {
+			opacity: 1;
+		}
+  }
+}
+
+.product.data.items>.item.title {
+	>.switch {
+		background:transparent;
+		//@include v(background-color, border );
+		@include v(border-color, border);
+		@include v(color, text);
+		font-weight:bold;
+		font-size: 1rem;
+		height: 44px;
+		line-height: 44px;
+	}
+	&:not(.disabled) {
+		>.switch:hover, >.switch:focus, >.switch:active {
+			@include v(border-color, border);
+			@include v(background-color, border );
+			@include v(color, titles);
+			opacity: .8;
+		}
+	}
+	&.active {
+		>.switch {
+			@include v(border-color, border);
+			@include v(background-color, border );
+			@include v(color, titles);
+			opacity:1;
+			&:hover, &:focus, &:active {
+				@include v(border-color, border);
+				@include v(background-color, border );
+				@include v(color, titles);
+				opacity:1;
+			}
+		}
+	}
+
+}
+
+.toolbar-products {
+	padding: 1rem;
+	border: 1px solid;
+	@include v(background-color, content-bg);
+	@include v(border-color, border);
+}

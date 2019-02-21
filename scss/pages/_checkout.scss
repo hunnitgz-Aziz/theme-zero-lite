@@ -1,0 +1,49 @@
+.checkout-index-index {
+	.checkout-container {
+		.authentication-wrapper {
+			display: none;
+		}
+
+		.opc-sidebar {
+			.opc-block-summary {
+				//Define Summary Block BG and Font Color
+				//@include v(background-color, background);
+				//@include v(color, text);
+
+				.title {
+					//@include v(color, text);
+				}
+			}
+		}
+
+		.opc-progress-bar {
+			.opc-progress-bar-item {
+				width: 33.3333%;
+
+				&._active {
+					span {
+						&:before {
+							@include v(background-color, primary);
+							@include v(border-color, primary);
+						}
+
+						&:after {
+							border-color: transparent;
+						}
+					}
+					&:before {
+						@include v(background-color, primary);
+						@include v(border-color, primary);
+					}
+				}
+
+				span {
+					&:after {
+						line-height: 20px;
+						vertical-align: middle;
+					}
+				}
+			}
+		}
+	}
+}
